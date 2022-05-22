@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punto 1</title>
+</head>
+<body>
+    <h2>Incremento IVA Producto</h2>
+    <form name="calculo" action="" method="post">
+        <label for="productonombre">Producto:</label> <br>
+        <input type="text" name="productonombre" id="productonombre"> <br>
+        <label for="precio">Precio:</label> <br>
+        <input type="number" name="precio" id="precio"> <br>
+        <label for="ivaporcentaje">Iva:</label> <br>
+        <input type="number" name="ivaporcentaje" id="ivaporcentaje"> <br>
+        <input id="boton" type="submit">
+    </form>
+
+    <h2>Resultado</h2>
+    <table id="tabla" border="1">
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Iva</th>
+          <th>Total + Iva</th>
+        </tr>
+        <tr>
+          <td id="celdapro"></td>
+          <td id="celdapre"></td>
+          <td id="celdaiva"></td>
+          <td id="celdatot"></td>
+        </tr>
+    </table>
+    
+    <script type="text/javascript">
+        var btn=document.getElementById("boton");
+        
+        function calcular (){
+        var nombre = document.calculo.productonombre.value;
+        var precio = document.calculo.precio.value;
+        var iva = document.calculo.ivaporcentaje.value;
+        var a = precio*(iva/100);
+        var b = Number(precio) + Number(a);
+        viejotexto = document.getElementById("celdapro");
+        nuevotexto = document.createTextNode(nombre);
+        viejotexto.appendChild(nuevotexto);
+        viejotexto = document.getElementById("celdapre");
+        nuevotexto = document.createTextNode(precio);
+        viejotexto.appendChild(nuevotexto);
+        viejotexto = document.getElementById("celdaiva");
+        nuevotexto = document.createTextNode(iva);
+        viejotexto.appendChild(nuevotexto);
+        viejotexto = document.getElementById("celdatot");
+        nuevotexto = document.createTextNode(b);
+        viejotexto.appendChild(nuevotexto);
+        alert ('Precio total: ' + b);
+        }
+
+        btn.onclick=calcular; 
+    </script>
+</body>
+</html>
